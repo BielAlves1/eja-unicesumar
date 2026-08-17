@@ -1,0 +1,44 @@
+/* Custom styles beyond Tailwind */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth header shadow on scroll */
+#header.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* FAQ accordion animation */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.25s ease;
+}
+
+.faq-item.active .faq-content {
+  display: block;
+  max-height: 200px;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
