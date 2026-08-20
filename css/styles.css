@@ -1,38 +1,274 @@
-/* Custom styles beyond Tailwind */
+/* OnlineJA — Custom styles */
+
+:root {
+  --primary-50: #eef6ff;
+  --primary-100: #d9ebff;
+  --primary-200: #bcdbff;
+  --primary-300: #8ec5ff;
+  --primary-400: #59a3ff;
+  --primary-500: #3380ff;
+  --primary-600: #0a5a9e;
+  --primary-700: #0a4a85;
+  --primary-800: #0c3d6d;
+  --primary-900: #0f335a;
+  --primary-950: #0a203b;
+
+  --accent-400: #34d399;
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-700: #047857;
+
+  --navy-800: #0f2744;
+  --navy-900: #0a1a2e;
+  --navy-950: #06101c;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Smooth header shadow on scroll */
-#header.scrolled {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+/* Primary */
+.bg-primary-50 {
+  background-color: var(--primary-50);
+}
+.bg-primary-100 {
+  background-color: var(--primary-100);
+}
+.bg-primary-200 {
+  background-color: var(--primary-200);
+}
+.bg-primary-300 {
+  background-color: var(--primary-300);
+}
+.bg-primary-400 {
+  background-color: var(--primary-400);
+}
+.bg-primary-500 {
+  background-color: var(--primary-500);
+}
+.bg-primary-600 {
+  background-color: var(--primary-600);
+}
+.bg-primary-700 {
+  background-color: var(--primary-700);
+}
+.bg-primary-800 {
+  background-color: var(--primary-800);
+}
+.bg-primary-900 {
+  background-color: var(--primary-900);
+}
+.bg-primary-950 {
+  background-color: var(--primary-950);
 }
 
-/* FAQ accordion animation */
+.text-primary-50 {
+  color: var(--primary-50);
+}
+.text-primary-100 {
+  color: var(--primary-100);
+}
+.text-primary-200 {
+  color: var(--primary-200);
+}
+.text-primary-300 {
+  color: var(--primary-300);
+}
+.text-primary-400 {
+  color: var(--primary-400);
+}
+.text-primary-500 {
+  color: var(--primary-500);
+}
+.text-primary-600 {
+  color: var(--primary-600);
+}
+.text-primary-700 {
+  color: var(--primary-700);
+}
+.text-primary-800 {
+  color: var(--primary-800);
+}
+.text-primary-900 {
+  color: var(--primary-900);
+}
+.text-primary-950 {
+  color: var(--primary-950);
+}
+
+/* Accent */
+.bg-accent-50 {
+  background-color: #f0fdf4;
+}
+.bg-accent-100 {
+  background-color: #dcfce7;
+}
+.bg-accent-400 {
+  background-color: var(--accent-400);
+}
+.bg-accent-500 {
+  background-color: var(--accent-500);
+}
+.bg-accent-600 {
+  background-color: var(--accent-600);
+}
+.bg-accent-700 {
+  background-color: var(--accent-700);
+}
+
+.text-accent-400 {
+  color: var(--accent-400);
+}
+.text-accent-500 {
+  color: var(--accent-500);
+}
+.text-accent-600 {
+  color: var(--accent-600);
+}
+.text-accent-700 {
+  color: var(--accent-700);
+}
+
+/* Navy */
+.bg-navy-800 {
+  background-color: var(--navy-800);
+}
+.bg-navy-900 {
+  background-color: var(--navy-900);
+}
+.bg-navy-950 {
+  background-color: var(--navy-950);
+}
+.text-navy-900 {
+  color: var(--navy-900);
+}
+
+/* Gradients */
+.from-primary-300 {
+  --tw-gradient-from: var(--primary-300);
+}
+.from-primary-500 {
+  --tw-gradient-from: var(--primary-500);
+}
+.from-primary-600 {
+  --tw-gradient-from: var(--primary-600);
+}
+.from-primary-700 {
+  --tw-gradient-from: var(--primary-700);
+}
+.from-accent-400 {
+  --tw-gradient-from: var(--accent-400);
+}
+.from-accent-500 {
+  --tw-gradient-from: var(--accent-500);
+}
+.from-navy-950 {
+  --tw-gradient-from: var(--navy-950);
+}
+
+.via-navy-900 {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--navy-900), var(--tw-gradient-to);
+}
+.via-primary-600 {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--primary-600), var(--tw-gradient-to);
+}
+
+.to-primary-300 {
+  --tw-gradient-to: var(--primary-300);
+}
+.to-primary-600 {
+  --tw-gradient-to: var(--primary-600);
+}
+.to-primary-800 {
+  --tw-gradient-to: var(--primary-800);
+}
+.to-primary-900 {
+  --tw-gradient-to: var(--primary-900);
+}
+.to-accent-400 {
+  --tw-gradient-to: var(--accent-400);
+}
+.to-accent-500 {
+  --tw-gradient-to: var(--accent-500);
+}
+
+/* Opacity helpers */
+.bg-primary-500\/30 {
+  background-color: rgba(51, 128, 255, 0.3);
+}
+.bg-primary-600\/20 {
+  background-color: rgba(10, 90, 158, 0.2);
+}
+.bg-accent-500\/10 {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+.bg-accent-500\/20 {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+.bg-accent-500\/25 {
+  background-color: rgba(16, 185, 129, 0.25);
+}
+.bg-accent-500\/30 {
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+.border-primary-200 {
+  border-color: var(--primary-200);
+}
+.border-navy-900 {
+  border-color: var(--navy-900);
+}
+.border-accent-500 {
+  border-color: var(--accent-500);
+}
+
+.shadow-accent-500\/25 {
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+}
+.shadow-accent-500\/30 {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3);
+}
+.shadow-primary-600\/30 {
+  box-shadow: 0 12px 30px rgba(10, 90, 158, 0.3);
+}
+
+/* Header */
+#header.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* FAQ accordion */
 .faq-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.25s ease;
+  opacity: 0;
+  padding-bottom: 0;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    padding-bottom 0.3s ease;
 }
 
 .faq-item.active .faq-content {
-  display: block;
-  max-height: 200px;
+  opacity: 1;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
 }
 
 .faq-item.active .faq-icon {
   transform: rotate(180deg);
 }
 
-/* Focus styles for accessibility */
+/* Focus */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid #10b981;
   outline-offset: 2px;
 }
 
-/* Reduce motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

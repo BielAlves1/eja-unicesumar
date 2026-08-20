@@ -1,85 +1,144 @@
+/**
+ * OnlineJA — Main JavaScript
+ * Footer year, mobile menu, header scroll, FAQ accordion, smooth scroll
+ */
+
 (function () {
   'use strict';
 
-  // Year in footer
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  // Footer year
+  function initFooterYear() {
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+  }
 
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
+  // Mobile menu
+  function initMobileMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
 
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
+    if (!menuToggle || !mobileMenu) return;
+
+    const closeMenu = () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const toggleMenu = () => {
       const isOpen = !mobileMenu.classList.contains('hidden');
       mobileMenu.classList.toggle('hidden');
-      iconOpen.classList.toggle('hidden', !isOpen);
-      iconClose.classList.toggle('hidden', isOpen);
+      iconOpen?.classList.toggle('hidden', !isOpen);
+      iconClose?.classList.toggle('hidden', isOpen);
       menuToggle.setAttribute('aria-expanded', String(!isOpen));
-    });
+    };
 
-    // Close on link click
+    menuToggle.addEventListener('click', toggleMenu);
+
     mobileMenu.querySelectorAll('.mobile-link, a[href^="http"]').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        iconOpen.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 
   // Header scroll effect
-  const header = document.getElementById('header');
-  if (header) {
-    const onScroll = () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+  function initHeaderScroll() {
+    const header = document.getElementById('header');
+    if (!header) return;
+
+    const handleScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
   }
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-toggle').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isActive = item.classList.contains('active');
+  // FAQ accordion — smooth height + opacity transition
+  function initFaq() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqToggles = document.querySelectorAll('.faq-toggle');
 
-      // Close all
-      document.querySelectorAll('.faq-item').forEach((el) => {
-        el.classList.remove('active');
-        el.querySelector('.faq-content').classList.add('hidden');
-        el.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
-      });
+    if (!faqToggles.length) return;
 
-      // Open clicked if it was closed
-      if (!isActive) {
-        item.classList.add('active');
-        item.querySelector('.faq-content').classList.remove('hidden');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
+    const closeItem = (item) => {
+      const content = item.querySelector('.faq-content');
+      if (!content) return;
 
-  // Smooth scroll for anchor links (extra safety)
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const id = anchor.getAttribute('href');
-      if (id.length > 1) {
-        const target = document.querySelector(id);
-        if (target) {
-          e.preventDefault();
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
+      // Captura a altura atual para animar o fechamento
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.offsetHeight; // force reflow
+      content.style.maxHeight = '0';
+      content.style.opacity = '0';
+      content.style.paddingBottom = '0';
+
+      item.classList.remove('active');
+      item.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
+    };
+
+    const openItem = (item, button) => {
+      const content = item.querySelector('.faq-content');
+      if (!content) return;
+
+      item.classList.add('active');
+      button.setAttribute('aria-expanded', 'true');
+
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      content.style.paddingBottom = '1.25rem';
+    };
+
+    faqToggles.forEach((button) => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        if (!item) return;
+
+        const isActive = item.classList.contains('active');
+
+        // Fecha todos os itens
+        faqItems.forEach(closeItem);
+
+        // Abre o clicado se estava fechado
+        if (!isActive) {
+          openItem(item, button);
         }
-      }
+      });
     });
-  });
+  }
+
+  // Smooth scroll for anchors
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event) => {
+        const id = anchor.getAttribute('href');
+        if (!id || id === '#') return;
+
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        event.preventDefault();
+
+        const headerOffset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      });
+    });
+  }
+
+  // Init
+  function init() {
+    initFooterYear();
+    initMobileMenu();
+    initHeaderScroll();
+    initFaq();
+    initSmoothScroll();
+  }
+
+  init();
 })();
