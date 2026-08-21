@@ -63,33 +63,6 @@
 
     if (!faqToggles.length) return;
 
-    const closeItem = (item) => {
-      const content = item.querySelector('.faq-content');
-      if (!content) return;
-
-      // Captura a altura atual para animar o fechamento
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.offsetHeight; // force reflow
-      content.style.maxHeight = '0';
-      content.style.opacity = '0';
-      content.style.paddingBottom = '0';
-
-      item.classList.remove('active');
-      item.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
-    };
-
-    const openItem = (item, button) => {
-      const content = item.querySelector('.faq-content');
-      if (!content) return;
-
-      item.classList.add('active');
-      button.setAttribute('aria-expanded', 'true');
-
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-      content.style.paddingBottom = '1.25rem';
-    };
-
     faqToggles.forEach((button) => {
       button.addEventListener('click', () => {
         const item = button.closest('.faq-item');
@@ -97,12 +70,16 @@
 
         const isActive = item.classList.contains('active');
 
-        // Fecha todos os itens
-        faqItems.forEach(closeItem);
+        // Fecha todos
+        faqItems.forEach((el) => {
+          el.classList.remove('active');
+          el.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
+        });
 
-        // Abre o clicado se estava fechado
+        // Abre o clicado (se estava fechado)
         if (!isActive) {
-          openItem(item, button);
+          item.classList.add('active');
+          button.setAttribute('aria-expanded', 'true');
         }
       });
     });
