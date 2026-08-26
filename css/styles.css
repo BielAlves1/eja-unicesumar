@@ -466,6 +466,7 @@ button:focus-visible {
 .hero-content-layer {
   position: relative;
   z-index: 10;
+  pointer-events: none;
 }
 
 .hero-swiper-nav {
