@@ -382,6 +382,10 @@ button:focus-visible {
   .hero-title {
     font-size: 2.25rem !important;
   }
+
+  #beneficios .benefit-card {
+    width: calc(50% - 0.75rem);
+  }
 }
 
 /* Softer section padding on small screens */
@@ -391,27 +395,71 @@ button:focus-visible {
   }
 }
 
-/* Floating WhatsApp above safe area + pulse */
+/* Floating WhatsApp + onda pulsante */
 .wa-float {
+  position: fixed;
+  z-index: 40;
   bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
   right: calc(1.25rem + env(safe-area-inset-right, 0px));
-  animation: wa-pulse 1.8s ease-in-out infinite;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #20bd5a; /* seu verde escuro como cor normal */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45); /* verde claro na sombra */
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-@keyframes wa-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+.wa-float:hover {
+  background-color: #1aa34d; /* levemente mais escuro no hover */
+  transform: scale(1.08);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.55);
+}
+
+/* Ondas (animação do primeiro exemplo) */
+.wa-float::before,
+.wa-float::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 3px solid #25d366; /* verde claro na onda */
+  opacity: 0;
+  animation: WaveWhatsApp 1.8s ease infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wa-float::after {
+  animation-delay: 0.6s;
+}
+
+@keyframes WaveWhatsApp {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.7;
   }
-  50% {
-    transform: scale(1.18);
-    box-shadow: 0 16px 48px rgba(37, 211, 102, 0.85);
+  70% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wa-float {
+  .wa-float::before,
+  .wa-float::after {
     animation: none;
   }
 }
@@ -467,6 +515,10 @@ button:focus-visible {
   position: relative;
   z-index: 10;
   pointer-events: none;
+}
+
+.hero-content-layer > * {
+  pointer-events: auto;
 }
 
 .hero-swiper-nav {
@@ -634,27 +686,43 @@ button:focus-visible {
 }
 
 /* ========== BENEFÍCIOS CARDS ========== */
+#beneficios .benefits-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
 #beneficios .benefit-card {
-  background: var(--primary-50);
-  border: 1px solid var(--primary-200);
-  box-shadow: 0 10px 28px rgba(47, 109, 255, 0.18);
+  background: var(--navy-800);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(6, 16, 28, 0.35);
+  width: 100%;
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 #beneficios .benefit-card:hover {
-  background: var(--primary-100);
-  border-color: var(--primary-300);
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(10, 77, 204, 0.28);
+  background: var(--navy-800);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-6px) scale(1.03) !important;
+  box-shadow: 0 20px 48px rgba(6, 16, 28, 0.55);
+}
+
+#beneficios .benefit-card h3 {
+  color: #ffffff;
+}
+
+#beneficios .benefit-card p {
+  color: #cbd5e1;
 }
 
 #beneficios .benefit-card .benefit-icon {
   transition:
-    transform 0.3s ease,
+    transform 0.2s ease,
     background 0.3s ease;
 }
 
@@ -662,12 +730,34 @@ button:focus-visible {
   transform: scale(1.1);
 }
 
-#beneficios .benefit-card:hover .benefit-icon.icon-primary {
-  background-color: var(--primary-200);
+#beneficios .benefit-card .benefit-icon.icon-primary,
+#beneficios .benefit-card .benefit-icon.icon-accent {
+  background-color: #ffffff;
 }
 
+#beneficios .benefit-card .benefit-icon.icon-primary svg,
+#beneficios .benefit-card .benefit-icon.icon-accent svg {
+  color: var(--navy-950);
+}
+
+#beneficios .benefit-card:hover .benefit-icon.icon-primary,
 #beneficios .benefit-card:hover .benefit-icon.icon-accent {
-  background-color: #fef08c;
+  background-color: var(--primary-100);
+}
+
+#beneficios .benefit-card:hover .benefit-icon.icon-primary svg,
+#beneficios .benefit-card:hover .benefit-icon.icon-accent svg {
+  color: var(--primary-700);
+}
+
+@media (min-width: 1024px) {
+  #beneficios .benefits-grid {
+    gap: 2rem;
+  }
+
+  #beneficios .benefit-card {
+    width: calc(33.333% - 1.34rem);
+  }
 }
 
 /* ========== MARKER ANIMATION ========== */
