@@ -388,8 +388,31 @@ button:focus-visible {
   }
 }
 
-/* Softer section padding on small screens */
 @media (max-width: 767px) {
+  #como-funciona .timeline-step {
+    text-align: center;
+  }
+
+  #como-funciona .timeline-step > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #como-funciona .timeline-number {
+    flex-shrink: 0;
+  }
+
+  #como-funciona .timeline-mobile-content {
+    width: 100%;
+    background: white;
+    padding: 0 8px;
+  }
+
+  #como-funciona .timeline-line-mobile {
+    transform-origin: top center;
+  }
+
   section {
     scroll-margin-top: 5rem;
   }

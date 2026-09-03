@@ -305,11 +305,14 @@
 
     // Como funciona
     const comoFunciona = document.querySelector('#como-funciona');
+
     if (comoFunciona) {
       const timelineCol = comoFunciona.querySelector('.grid > div:first-child');
       const imageCol = comoFunciona.querySelector('.grid > div:last-child');
-      const steps = comoFunciona.querySelectorAll('ol > li');
+      const steps = comoFunciona.querySelectorAll('.timeline-step');
       const timelineLine = comoFunciona.querySelector('.absolute.left-1\\/2');
+      const mobileLine = comoFunciona.querySelector('.timeline-line-mobile');
+      const mobileNumbers = comoFunciona.querySelectorAll('.timeline-number');
 
       if (imageCol) {
         gsap.from(imageCol, {
@@ -317,36 +320,108 @@
           x: 65,
           duration: 1.1,
           ease: 'power3.out',
-          scrollTrigger: { trigger: comoFunciona, start: 'top 25%' },
+          scrollTrigger: {
+            trigger: comoFunciona,
+            start: 'top 25%',
+          },
         });
       }
 
-      if (steps.length) {
-        gsap.from(steps, {
-          autoAlpha: 0,
-          y: 35,
-          duration: 0.65,
-          ease: 'power3.out',
-          stagger: 0.14,
-          scrollTrigger: { trigger: timelineCol, start: 'top 78%' },
-        });
-      }
-
-      if (timelineLine && window.innerWidth >= 768) {
-        gsap.fromTo(
-          timelineLine,
-          { scaleY: 0, transformOrigin: 'top center' },
-          {
-            scaleY: 1,
-            ease: 'none',
+      if (window.innerWidth >= 768) {
+        if (steps.length) {
+          gsap.from(steps, {
+            autoAlpha: 0,
+            y: 35,
+            duration: 0.65,
+            ease: 'power3.out',
+            stagger: 0.14,
             scrollTrigger: {
               trigger: timelineCol,
-              start: 'top 70%',
-              end: 'bottom 80%',
-              scrub: 0.7,
+              start: 'top 78%',
             },
-          },
-        );
+          });
+        }
+
+        if (timelineLine) {
+          gsap.fromTo(
+            timelineLine,
+            {
+              scaleY: 0,
+              transformOrigin: 'top center',
+            },
+            {
+              scaleY: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: timelineCol,
+                start: 'top 70%',
+                end: 'bottom 80%',
+                scrub: 0.7,
+              },
+            },
+          );
+        }
+      }
+
+      if (window.innerWidth < 768) {
+        if (steps.length && mobileLine) {
+          gsap.set(steps, {
+            autoAlpha: 0,
+            y: 40,
+          });
+
+          gsap.set(mobileNumbers, {
+            scale: 0.7,
+          });
+
+          gsap.set(mobileLine, {
+            scaleY: 0,
+            transformOrigin: 'top center',
+          });
+
+          const mobileTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: timelineCol,
+              start: 'top 75%',
+              end: 'bottom 75%',
+              scrub: 0.8,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          mobileTimeline.to(
+            mobileLine,
+            {
+              scaleY: 1,
+              ease: 'none',
+              duration: 1,
+            },
+            0,
+          );
+
+          steps.forEach((step, index) => {
+            mobileTimeline.to(
+              step,
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.35,
+                ease: 'power2.out',
+              },
+              index * 0.18,
+            );
+
+            mobileTimeline.to(
+              mobileNumbers[index],
+              {
+                scale: 1,
+                duration: 0.25,
+                ease: 'back.out(1.7)',
+              },
+              index * 0.18,
+            );
+          });
+        }
       }
     }
 

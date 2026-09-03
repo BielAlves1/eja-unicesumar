@@ -239,14 +239,14 @@
               >Como Funciona</a
             >
             <a
-              href="#faq"
-              class="nav-link relative text-sm font-medium text-slate-700 transition-all duration-200 hover:text-slate-900 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary-600 after:transition-all after:duration-200 hover:after:w-full"
-              >FAQ</a
-            >
-            <a
               href="#quemsomos"
               class="nav-link relative text-sm font-medium text-slate-700 transition-all duration-200 hover:text-slate-900 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary-600 after:transition-all after:duration-200 hover:after:w-full"
               >Quem Somos</a
+            >
+            <a
+              href="#faq"
+              class="nav-link relative text-sm font-medium text-slate-700 transition-all duration-200 hover:text-slate-900 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary-600 after:transition-all after:duration-200 hover:after:w-full"
+              >FAQ</a
             >
           </nav>
 
@@ -286,8 +286,8 @@
           <a href="#cursos" class="mobile-link px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-200/80 font-medium">Cursos</a>
           <a href="#beneficios" class="mobile-link px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-200/80 font-medium">Benefícios</a>
           <a href="#como-funciona" class="mobile-link px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-200/80 font-medium">Como Funciona</a>
-          <a href="#faq" class="mobile-link px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-200/80 font-medium">FAQ</a>
           <a href="#quemsomos" class="mobile-link px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-200/80 font-medium">Quem Somos</a>
+          <a href="#faq" class="mobile-link px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-200/80 font-medium">FAQ</a>
           <a
             href="https://wa.me/5519998018058?text=Olá! Gostaria de saber mais sobre o EJA Online."
             target="_blank"
@@ -804,69 +804,91 @@
             <div class="relative order-2 lg:order-1">
               <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary-200 -translate-x-1/2"></div>
 
-              <ol class="space-y-8 md:space-y-0">
-                <li class="md:grid md:grid-cols-2 md:gap-6 md:items-center">
+              <div class="md:hidden absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary-100 -translate-x-1/2 timeline-line-mobile"></div>
+
+              <ol class="space-y-8 md:space-y-0 relative">
+                <li class="timeline-step md:grid md:grid-cols-2 md:gap-6 md:items-center">
                   <div class="md:text-right md:pr-6 mb-3 md:mb-0">
                     <span
-                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2 md:mb-0 md:float-right"
+                      class="timeline-number inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2 md:mb-0 md:float-right relative z-20"
                     >
                       1
                     </span>
-                    <h3 class="text-lg font-bold text-navy-900 mt-1.5 md:mt-0 clear-both">Faça a matrícula</h3>
-                    <p class="text-slate-600 mt-1 text-sm leading-relaxed">Escolha o curso e realize a matrícula de forma rápida e segura.</p>
+
+                    <div class="timeline-mobile-content relative z-10">
+                      <h3 class="text-lg font-bold text-navy-900 mt-1.5 md:mt-0 clear-both">Faça a matrícula</h3>
+                      <p class="text-slate-600 mt-1 text-sm leading-relaxed">Escolha o curso e realize a matrícula de forma rápida e segura.</p>
+                    </div>
                   </div>
+
                   <div class="md:pl-6 hidden md:block"></div>
                 </li>
 
-                <li class="md:grid md:grid-cols-2 md:gap-6 md:items-center">
+                <li class="timeline-step md:grid md:grid-cols-2 md:gap-6 md:items-center">
                   <div class="hidden md:block"></div>
+
                   <div class="md:pl-6">
                     <span
-                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2"
+                      class="timeline-number inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2 relative z-20"
                     >
                       2
                     </span>
-                    <h3 class="text-lg font-bold text-navy-900">Acesse a plataforma</h3>
-                    <p class="text-slate-600 mt-1 text-sm leading-relaxed">Aulas online e material didático digital.</p>
+
+                    <div class="timeline-mobile-content relative z-10">
+                      <h3 class="text-lg font-bold text-navy-900">Acesse a plataforma</h3>
+                      <p class="text-slate-600 mt-1 text-sm leading-relaxed">Aulas online e material didático digital.</p>
+                    </div>
                   </div>
                 </li>
 
-                <li class="md:grid md:grid-cols-2 md:gap-6 md:items-center">
+                <li class="timeline-step md:grid md:grid-cols-2 md:gap-6 md:items-center">
                   <div class="md:text-right md:pr-6 mb-3 md:mb-0">
                     <span
-                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2 md:mb-0 md:float-right"
+                      class="timeline-number inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2 md:mb-0 md:float-right relative z-20"
                     >
                       3
                     </span>
-                    <h3 class="text-lg font-bold text-navy-900 mt-1.5 md:mt-0 clear-both">Estude com flexibilidade</h3>
-                    <p class="text-slate-600 mt-1 text-sm leading-relaxed">Estude de onde e quando quiser, adaptando a sua rotina.</p>
+
+                    <div class="timeline-mobile-content relative z-10">
+                      <h3 class="text-lg font-bold text-navy-900 mt-1.5 md:mt-0 clear-both">Estude com flexibilidade</h3>
+                      <p class="text-slate-600 mt-1 text-sm leading-relaxed">Estude de onde e quando quiser, adaptando a sua rotina.</p>
+                    </div>
                   </div>
+
                   <div class="md:pl-6 hidden md:block"></div>
                 </li>
 
-                <li class="md:grid md:grid-cols-2 md:gap-6 md:items-center">
+                <li class="timeline-step md:grid md:grid-cols-2 md:gap-6 md:items-center">
                   <div class="hidden md:block"></div>
+
                   <div class="md:pl-6">
                     <span
-                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2"
+                      class="timeline-number inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-base shadow-lg shadow-primary-600/30 mb-2 relative z-20"
                     >
                       4
                     </span>
-                    <h3 class="text-lg font-bold text-navy-900">Realize as avaliações</h3>
-                    <p class="text-slate-600 mt-1 text-sm leading-relaxed">Agende sua avaliação de forma prática e rápida em nosso polo.</p>
+
+                    <div class="timeline-mobile-content relative z-10">
+                      <h3 class="text-lg font-bold text-navy-900">Realize as avaliações</h3>
+                      <p class="text-slate-600 mt-1 text-sm leading-relaxed">Agende sua avaliação de forma prática e rápida em nosso polo.</p>
+                    </div>
                   </div>
                 </li>
 
-                <li class="md:grid md:grid-cols-2 md:gap-6 md:items-center">
+                <li class="timeline-step md:grid md:grid-cols-2 md:gap-6 md:items-center">
                   <div class="md:text-right md:pr-6">
                     <span
-                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-accent-500 text-white font-bold text-base shadow-lg shadow-accent-500/30 mb-2 md:mb-0 md:float-right"
+                      class="timeline-number inline-flex items-center justify-center w-9 h-9 rounded-full bg-accent-500 text-white font-bold text-base shadow-lg shadow-accent-500/30 mb-2 md:mb-0 md:float-right relative z-20"
                     >
                       5
                     </span>
-                    <h3 class="text-lg font-bold text-navy-900 mt-1.5 md:mt-0 clear-both">Receba o certificado</h3>
-                    <p class="text-slate-600 mt-1 text-sm leading-relaxed">Emissão do seu certificado após a conclusão do curso.</p>
+
+                    <div class="timeline-mobile-content relative z-10">
+                      <h3 class="text-lg font-bold text-navy-900 mt-1.5 md:mt-0 clear-both">Receba o certificado</h3>
+                      <p class="text-slate-600 mt-1 text-sm leading-relaxed">Emissão do seu certificado após a conclusão do curso.</p>
+                    </div>
                   </div>
+
                   <div class="md:pl-6 hidden md:block"></div>
                 </li>
               </ol>
@@ -1003,8 +1025,8 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div class="faq-content px-6 text-slate-600 leading-relaxed !pb-0">18 anos para EJA Ensino Médio</div>
-              <div class="faq-content px-6 text-slate-600 leading-relaxed">15 anos para EJA Ensino Fundamental</div>
+              <div class="faq-content px-6 text-slate-600 leading-relaxed !pb-0">18 anos para EJA Ensino Médio.</div>
+              <div class="faq-content px-6 text-slate-600 leading-relaxed">15 anos para EJA Ensino Fundamental.</div>
             </div>
 
             <div class="faq-item bg-white rounded-xl border border-slate-200 overflow-hidden">
@@ -1017,7 +1039,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div class="faq-content px-6 text-slate-600 leading-relaxed !pb-0">
+              <div class="faq-content px-6 text-slate-600 leading-relaxed !pb-1">
                 EJA Ensino médio: Em até 45 dias úteis após a conclusão dos estudos e envio de toda documentação.
               </div>
               <div class="faq-content px-6 text-slate-600 leading-relaxed">
@@ -1036,7 +1058,7 @@
                 </svg>
               </button>
               <div class="faq-content px-6 text-slate-600 leading-relaxed">
-                Não. Todo o material didático digital é gratuito e disponibilizado na plataforma de estudos do aluno
+                Não. Todo o material didático digital é gratuito e disponibilizado na plataforma de estudos do aluno.
               </div>
             </div>
 
